@@ -16,6 +16,21 @@ function M.float_term(cmd, opts)
   require("lazy.util").float_term(cmd, opts)
 end
 
+function M.termnial_background()
+  -- get the current background color
+  local bg = vim.api.nvim_get_hl_by_name("Normal", true).background
+  -- get the hex value of the current background color
+  -- local bg_hex = vim.api.nvim_get_color_by_name(bg)
+  -- convert the hex value to a string
+  local bg_hex_str = string.format("#%06x", bg)
+  -- get r, g, b values
+  local r, g, b = bg_hex_str:match("#(%x%x)(%x%x)(%x%x)")
+  -- convert to numbers
+  r, g, b = tonumber(r, 16) + 8, tonumber(g, 16) + 8, tonumber(b, 16) + 16
+  -- convert to hex string
+  return string.format("#%02x%02x%02x", r, g, b)
+end
+
 M.icons = {
   diagnostics = {
     Error = " ",

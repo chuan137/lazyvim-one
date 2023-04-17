@@ -55,3 +55,6 @@ vim.g.markdown_recommended_style = 0
 
 -- pynvim
 vim.g.python3_host_prog = "~/.local/share/nvim-venv/bin/python"
+
+-- background color for secondary windows: help, terminal, etc
+vim.g.terminal_background = "#26263e"

@@ -53,3 +53,8 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = true
   end,
 })
+
+-- create a command calling the function from users.util module
+--vim.api.nvim_create_command("TermBackground", function ()
+ -- print(util.termnial_background())
+--end)

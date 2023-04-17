@@ -59,25 +59,6 @@ return {
   {
     "akinsho/nvim-toggleterm.lua",
     config = function()
-      local colors = require("catppuccin.palettes").get_palette("mocha")
-      -- Define the original color as a hex code
-      local hex_color = colors.base
-
-      -- Convert hex color to RGB values
-      local r = tonumber(hex_color:sub(2, 3), 16)
-      local g = tonumber(hex_color:sub(4, 5), 16)
-      local b = tonumber(hex_color:sub(6, 7), 16)
-
-      -- Add 1 to each color component
-      r = r + 8
-      g = g + 8 
-      b = b + 16
-
-      -- Convert RGB values back to hex color
-      local new_hex_color = string.format("#%02X%02X%02X", r, g, b)
-
-      -- Print the new hex color
-      print(new_hex_color)
       require("toggleterm").setup({
         size = 20,
         open_mapping = [[<c-\>]],
@@ -91,7 +72,7 @@ return {
         shell = vim.o.shell,
         highlights = {
           Normal = {
-            guibg = new_hex_color,
+            guibg = vim.g.terminal_background,
           },
           NormalFloat = {
             link = "Normal",
