@@ -14,7 +14,7 @@ vim.keymap.set("n", "<leader>a", ":keepjumps normal! ggVG<cr>")
 vim.keymap.set({ "n", "x" }, "x", '"_x')
 
 -- commands
-vim.keymap.set("n", "<leader>bb", "<cmd>buffer #<cr>")
+vim.keymap.set("n", "<leader><space>", "<cmd>buffer #<cr>")
 vim.keymap.set("n", "<leader>bq", "<cmd>bdelete<cr>")
 
 vim.keymap.set("n", "<leader>,L", "<cmd>Lazy<cr>")

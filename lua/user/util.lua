@@ -31,6 +31,29 @@ function M.termnial_background()
   return string.format("#%02x%02x%02x", r, g, b)
 end
 
+function M.toggle_term()
+  local Terminal = require("toggleterm.terminal").Terminal
+  local term = vim.api.nvim_get_var("myTerm")
+  if term == nil then
+    term = Terminal:new({
+      cmd = "zsh",
+      hidden = true,
+      direction = "float",
+      float_opts = {
+        border = "curved",
+        winblend = 3,
+        highlights = {
+          border = "Normal",
+          background = "Normal",
+        },
+      },
+    })
+    vim.api.nvim_set_var("myTerm", term)
+  end
+  print(vim.inspect(term))
+  term:toggle()
+end
+
 M.icons = {
   diagnostics = {
     Error = " ",

@@ -1,4 +1,25 @@
 return {
+  -- Themes
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = true,
+    opts = {
+      custom_highlights = {
+        VertSplit = { fg = "#45475a" },
+      },
+    },
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+      require("lualine").setup({
+        options = {
+          theme = "catppuccin",
+        },
+      })
+    end,
+  },
+
+  -- statusline
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",

@@ -43,11 +43,13 @@ local function lspconfig_setup(servers)
   vim.api.nvim_create_autocmd("LspAttach", {
     group = group,
     callback = function()
-      -- set pwd to project root, so that file path  in lualine is relative to project root
-      local client = vim.lsp.get_active_clients()[1]
-      if vim.tbl_contains(client.config, "root_dir") then
-        vim.api.nvim_set_current_dir(client.config.root_dir)
-      end
+      -- set pwd to project root, so that file path in lualine is relative to project root
+      -- local client = vim.lsp.get_active_clients()[1]
+      -- if vim.tbl_contains(client.config, "root_dir") then
+      --   vim.api.nvim_set_current_dir(client.config.root_dir)
+      -- end
+      -- print("LspAttach")
+      -- print(vim.inspect(client.config.root_dir))
 
       local km_opts = { buffer = true, silent = true }
 

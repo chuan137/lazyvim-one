@@ -21,26 +21,6 @@ return {
     },
   },
 
-  -- Themes
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = true,
-    opts = {
-      custom_highlights = {
-        VertSplit = { fg = "#45475a" },
-      },
-    },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      require("lualine").setup({
-        options = {
-          theme = "catppuccin",
-        },
-      })
-    end,
-  },
-
   -- {
   --   "folke/tokyonight.nvim",
   --   lazy = true,
@@ -81,4 +61,24 @@ return {
       })
     end,
   },
+
+  {
+    "alexghergh/nvim-tmux-navigation",
+    opts = {
+      disable_when_zoomed = true, -- defaults to false
+      keybindings = {
+        left = "<C-h>",
+        down = "<C-j>",
+        up = "<C-k>",
+        right = "<C-l>",
+        -- last_active = "<C-\\>",
+        next = "<C-Space>",
+      },
+    },
+  },
+
+  {
+    "dstein64/vim-startuptime",
+  },
+
 }

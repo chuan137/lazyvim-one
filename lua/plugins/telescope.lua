@@ -25,7 +25,10 @@ return {
         scope_chdir = "win",
       },
       config = function()
-        require("project_nvim").setup({})
+        require("project_nvim").setup({
+          patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "Cargo.toml", ".envrc" },
+          ignore_lsp = { "efm", "null-ls" },
+        })
         require("telescope").load_extension("projects")
       end,
     },
@@ -36,7 +39,7 @@ return {
     vim.keymap.set("n", "<F8>", "<cmd>Telescope projects<cr>", { desc = "projects" })
     vim.keymap.set("n", "<leader>?", "<cmd>Telescope oldfiles<cr>")
     vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<cr>")
-    vim.keymap.set("n", "<leader><space>", "<cmd>Telescope buffers<cr>")
+    vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>")
     vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
     vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
     vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
