@@ -56,10 +56,10 @@ end
 
 M.icons = {
   diagnostics = {
-    Error = " ",
-    Warn = " ",
-    Hint = " ",
-    Info = " ",
+    error = " ",
+    warn = " ",
+    hint = " ",
+    info = " ",
   },
   git = {
     added = " ",

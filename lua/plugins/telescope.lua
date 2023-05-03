@@ -37,12 +37,25 @@ return {
     -- See :help telescope.builtin
     vim.keymap.set("n", "<F1>", "<cmd>Telescope help_tags<cr>", { desc = "help" })
     vim.keymap.set("n", "<F8>", "<cmd>Telescope projects<cr>", { desc = "projects" })
-    vim.keymap.set("n", "<leader>?", "<cmd>Telescope oldfiles<cr>")
+
+    -- string
     vim.keymap.set("n", "<leader>/", "<cmd>Telescope live_grep<cr>")
-    vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>")
-    vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-    vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
-    vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
+    vim.keymap.set("n", "<leader>?", "<cmd>Telescope grep_string<cr>")
     vim.keymap.set("n", "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
+
+    -- buffer
+    vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+    vim.keymap.set("n", "<leader>bb", function ()
+      require("telescope.builtin").buffers({
+        sort_lastused = true,
+        ignore_current_buffer = true,
+        show_all_buffers = true,
+        sorter = require("telescope.sorters").get_substr_matcher(),
+      })
+    end)
+
+    vim.keymap.set("n", "<F7>", "<cmd>Telescope oldfiles<cr>")
+    vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+    vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
   end,
 }

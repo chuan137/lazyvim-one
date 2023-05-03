@@ -20,7 +20,9 @@ return {
       vim.keymap.set("i", "<C-L>", "copilot#Next()", { silent = true, expr = true })
       vim.keymap.set({ "i", "n" }, "<C-x>", "<cmd>Copilot panel<cr>", { silent = true })
       -- vim.keymap.set("i", "<C-Space>", "copilot#Accept('<CR>')", { silent = true, expr = true, replace_keycodes = true })
-      vim.keymap.set("i", "<C-E>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
+      -- vim.keymap.set("i", "<C-E>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
+      vim.keymap.set("i", "<C-Space>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
+      vim.keymap.set("i", "<S-CR>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
     end,
   },
 }
