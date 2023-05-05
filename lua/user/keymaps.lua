@@ -42,6 +42,8 @@ map("n", "<leader>qq", "<cmd>qall<cr>", { desc = "Quit all" })
 
 map("n", "<leader>gg", function() util.float_term("lazygit") end, { desc = "Lazy git" })
 
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 
 -- Basic clipboard interaction
