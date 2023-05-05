@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "help", "man", "copilot.lua" },
+  pattern = { "help", "man", "copilot.lua", "fugitive*" },
   group = augroup("q_quit"),
   command = "nnoremap <buffer> q <cmd>quit<cr>",
 })
