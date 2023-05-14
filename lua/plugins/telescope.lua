@@ -26,7 +26,7 @@ return {
       },
       config = function()
         require("project_nvim").setup({
-          patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "Cargo.toml", ".envrc" },
+          patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "Cargo.toml", ".envrc", "requirements.txt", "pyrightconfig.json"},
           ignore_lsp = { "efm", "null-ls" },
         })
         require("telescope").load_extension("projects")
