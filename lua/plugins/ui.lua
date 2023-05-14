@@ -1,5 +1,13 @@
 return {
+  { "kyazdani42/nvim-web-devicons" },
+
   -- Themes
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = true,
+  --   opts = { style = "moon" },
+  -- },
+
   {
     "catppuccin/nvim",
     name = "catppuccin",

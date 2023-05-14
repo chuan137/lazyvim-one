@@ -1,9 +1,11 @@
 return {
-  { "tpope/vim-fugitive" },
-  { "wellle/targets.vim" },
+  {
+    "numToStr/Comment.nvim",
+    config = true,
+    event = "VeryLazy",
+  },
+
   { "tpope/vim-repeat" },
-  { "kyazdani42/nvim-web-devicons" },
-  { "numToStr/Comment.nvim",       config = true, event = "VeryLazy" },
 
   {
     "tpope/vim-surround",
@@ -21,17 +23,27 @@ return {
     },
   },
 
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = true,
-  --   opts = { style = "moon" },
-  -- },
+  { "wellle/targets.vim" },
 
   -- Auto pairs
   {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup({})
+    end,
+  },
+
+  -- git
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { silent = true })
+    end,
+  },
+  {
+    "tpope/vim-rhubarb",
+    config = function()
+      vim.g.github_enterprise_urls = { "https://github.wdf.sap.corp" }
     end,
   },
 
@@ -79,5 +91,13 @@ return {
 
   {
     "dstein64/vim-startuptime",
+  },
+
+  { 
+    "simrat39/symbols-outline.nvim" ,
+    config = function (_, opts)
+      require("symbols-outline").setup(opts)
+    end
+
   },
 }
