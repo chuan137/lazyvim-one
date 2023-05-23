@@ -5,8 +5,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
     },
     init = function()
       local ui_opts = { border = "rounded" }
@@ -14,17 +12,14 @@ return {
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, ui_opts)
     end,
     config = function()
+      -- Lsp logging
       vim.lsp.set_log_level("info")
       require("vim.lsp.log").set_format_func(vim.inspect)
 
       local nvim_lsp = require("lspconfig")
 
       local on_attach = function(_, bufnr)
-        local function buf_set_option(...)
-          vim.api.nvim_buf_set_option(bufnr, ...)
-        end
-
-        buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
         -- Mappings.
         -- stylua: ignore start
@@ -69,25 +64,20 @@ return {
   {
     "jose-elias-alvarez/null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "mason.nvim" },
     opts = function()
       local nls = require("null-ls")
       return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git", ".envrc"),
         sources = {
           nls.builtins.formatting.stylua,
-          nls.builtins.formatting.isort,
-          nls.builtins.formatting.yapf,
+          nls.builtins.formatting.isort.with({
+            command = "/Users/d067954/Library/Python/3.9/bin/isort",
+          }),
+          nls.builtins.formatting.yapf.with({
+            command = "/Users/d067954/Library/Python/3.9/bin/yapf",
+          }),
         },
       }
-    end,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    cmd = { "Mason", "LspInstall", "LspUnInstall" },
-    config = function()
-      require("mason").setup()
     end,
   },
 }
