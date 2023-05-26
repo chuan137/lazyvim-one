@@ -17,10 +17,10 @@ vim.keymap.set({ "n", "x" }, "x", '"_x')
 vim.keymap.set("n", "<leader><space>", "<cmd>buffer #<cr>")
 vim.keymap.set("n", "<leader>bq", "<cmd>bdelete<cr>")
 
-vim.keymap.set("n", "<leader>,L", "<cmd>Lazy<cr>")
-vim.keymap.set("n", "<leader>,M", "<cmd>Mason<cr>")
-vim.keymap.set("n", "<leader>,l", "<cmd>LspInfo<cr>")
-vim.keymap.set("n", "<leader>,n", "<cmd>NullLsInfo<cr>")
+vim.keymap.set("n", ",L", "<cmd>Lazy<cr>")
+vim.keymap.set("n", ",M", "<cmd>Mason<cr>")
+vim.keymap.set("n", ",l", "<cmd>LspInfo<cr>")
+vim.keymap.set("n", ",n", "<cmd>NullLsInfo<cr>")
 
 -- toggle file explorer
 vim.keymap.set("n", "<leader>e", util.toggle_netrw, { desc = "explore" })
