@@ -53,7 +53,7 @@ return {
     config = function()
       require("toggleterm").setup({
         size = 20,
-        open_mapping = [[<c-\>]],
+        open_mapping = [[<M-CR>]],
         shade_filetypes = {},
         shade_terminals = false,
         shading_factor = 1,
