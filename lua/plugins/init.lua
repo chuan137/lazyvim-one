@@ -50,6 +50,7 @@ return {
   -- Terminal
   {
     "akinsho/nvim-toggleterm.lua",
+    event = "VeryLazy",
     config = function()
       require("toggleterm").setup({
         size = 20,

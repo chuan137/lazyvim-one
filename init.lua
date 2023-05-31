@@ -1,11 +1,16 @@
-local load = function(mod)
-  package.loaded[mod] = nil
-  require(mod)
+if vim.g.vscode then
+  -- VSCode extension
+  return
 end
 
-load('user.options')
-load('user.commands')
-load('user.keymaps')
-load('user.setup')
+-- local load = function(mod)
+--   package.loaded[mod] = nil
+--   require(mod)
+-- end
 
-pcall(vim.cmd.colorscheme, 'catppuccin')
+require("user.options")
+require("user.commands")
+require("user.keymaps")
+require("user.setup")
+
+pcall(vim.cmd.colorscheme, "catppuccin")

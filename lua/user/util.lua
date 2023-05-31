@@ -103,6 +103,31 @@ M.icons = {
     Value = " ",
     Variable = " ",
   },
+  cmp_menu = {
+    nvim_lsp = "",
+    luasnip = "",
+    buffer = "",
+    path = "",
+  },
 }
+
+-- define a function to import plugin module with relative path and pcall
+-- @param path string: relative path of the module
+-- @return table: the module
+function M.import(path)
+  -- get the current file path and remove file name
+  local current_path = debug.getinfo(2, "S").source:match("@(.*/)")
+  -- get full path from relative path
+  path = current_path .. path
+  -- remove the part up to lua/
+  path = path:match(".*/lua/(.*)")
+  local ok, mod = pcall(require, path)
+  if not ok then
+    print("Error importing " .. path)
+    print(mod)
+    return nil
+  end
+  return mod
+end
 
 return M

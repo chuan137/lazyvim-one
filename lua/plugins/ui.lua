@@ -132,13 +132,18 @@ return {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "➤" },
-        topdelete = { text = "➤" },
-        changedelete = { text = "▎" },
-      },
+      -- signs = {
+      --   add = { text = "▎" },
+      --   change = { text = "▎" },
+      --   delete = { text = "➤" },
+      --   topdelete = { text = "➤" },
+      --   changedelete = { text = "▎" },
+      -- },
+      on_attach = function(bufnr)
+        -- keymaps
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "]g", "<cmd>lua require('gitsigns').next_hunk()<CR>", {})
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "[g", "<cmd>lua require('gitsigns').prev_hunk()<CR>", {})
+      end,
     },
   },
 }

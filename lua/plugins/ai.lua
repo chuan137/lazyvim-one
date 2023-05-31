@@ -2,7 +2,7 @@ return {
   {
     "github/copilot.vim",
     cmd = "Copilot",
-    -- enabled = false,
+    enabled = false,
     event = "VeryLazy",
     config = function()
       vim.g.copilot_no_tab_map = true
@@ -30,5 +30,58 @@ return {
   {
     "codota/tabnine-nvim",
     build = "./dl_binaries.sh",
+    event = "VeryLazy",
+    enabled = false,
+    opts = {
+      disable_auto_comment = true,
+      accept_keymap = "<C-\\>",
+      dismiss_keymap = "<C-]>",
+      debounce_ms = 800,
+      suggestion_color = { gui = "#808080", cterm = 244 },
+      exclude_filetypes = { "TelescopePrompt" },
+      log_file_path = nil, -- absolute path to Tabnine log file
+    },
+    config = function(_, opts)
+      require("tabnine").setup(opts)
+    end,
+  },
+
+  {
+    "dpayne/CodeGPT.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require("codegpt.config")
+    end,
+  },
+  {
+    'Exafunction/codeium.vim',
+    event = "VeryLazy",
+    config = function()
+      -- Change '<C-g>' here to any keycode you like.
+      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+    end,
+  },
+  {
+    "james1236/backseat.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("backseat").setup({
+        openai_model_id = 'gpt-3.5-turbo',        --gpt-4 (If you do not have access to a model, it says "The model does not exist")
+        -- language = 'english', -- Such as 'japanese', 'french', 'pirate', 'LOLCAT'
+        -- split_threshold = 100,
+        -- additional_instruction = "Respond snarkily", -- (GPT-3 will probably deny this request, but GPT-4 complies)
+        highlight = {
+            icon = '', -- ''
+            group = 'SpecialComment',
+        }
+      })
+    end
   },
 }
