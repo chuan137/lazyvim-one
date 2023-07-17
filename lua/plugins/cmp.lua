@@ -1,5 +1,3 @@
-local U = require("user.util")
-
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -44,7 +42,7 @@ return {
               buffer = "Buffer",
               path = "Path",
             }
-            item.kind = U.icons.kinds[item.kind]
+            item.kind = require('user.settings').icons.kinds[item.kind]
             item.menu = menu[entry.source.name] or entry.source.name
             -- item.menu = menu_icon[entry.source.name]
             return item
