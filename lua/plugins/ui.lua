@@ -1,14 +1,11 @@
 return {
-  { "kyazdani42/nvim-web-devicons" },
-
-  -- Themes
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = true,
-  --   opts = { style = "moon" },
-  -- },
+  {
+    "nvim-tree/nvim-web-devicons",
+    event = "VeryLazy",
+  },
 
   {
+    -- Themes
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = true,
@@ -17,18 +14,10 @@ return {
         VertSplit = { fg = "#45475a" },
       },
     },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      require("lualine").setup({
-        options = {
-          theme = "catppuccin",
-        },
-      })
-    end,
   },
 
-  -- statusline
   {
+    -- statusline
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function()
@@ -43,7 +32,7 @@ return {
 
       return {
         options = {
-          theme = "tokyonight",
+          theme = "catppuccin",
           globalstatus = true,
           disabled_filetypes = { statusline = { "dashboard", "alpha" } },
         },
@@ -69,13 +58,20 @@ return {
                 right = 0,
               },
             },
-            -- { "filename" },
-            { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-            -- stylua: ignore
             {
-              function() return require("nvim-navic").get_location() end,
-              cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+              "filename",
+              path = 1,
+              symbols = {
+                modified = "  ",
+                readonly = "",
+                unnamed = "",
+              },
             },
+            -- stylua: ignore
+            -- {
+            --   function() return require("nvim-navic").get_location() end,
+            --   cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+            -- },
           },
           lualine_x = {
             -- stylua: ignore
@@ -114,36 +110,5 @@ return {
         -- extensions = { "neo-tree", "lazy" },
       }
     end,
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      char = "▏",
-      show_trailing_blankline_indent = false,
-      show_first_indent_level = false,
-      use_treesitter = true,
-      show_current_context = false,
-    },
-  },
-
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      -- signs = {
-      --   add = { text = "▎" },
-      --   change = { text = "▎" },
-      --   delete = { text = "➤" },
-      --   topdelete = { text = "➤" },
-      --   changedelete = { text = "▎" },
-      -- },
-      on_attach = function(bufnr)
-        -- keymaps
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "]g", "<cmd>lua require('gitsigns').next_hunk()<CR>", {})
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "[g", "<cmd>lua require('gitsigns').prev_hunk()<CR>", {})
-      end,
-    },
   },
 }
