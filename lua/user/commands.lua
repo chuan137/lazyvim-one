@@ -58,5 +58,5 @@ vim.api.nvim_create_autocmd("FileType", {
 --vim.api.nvim_create_command("TermBackground", function ()
  -- print(util.termnial_background())
 --end)
-vim.api.nvim_create_user_command("TermBackground", "lua print(require('user.util').termnial_background())", {})
+vim.api.nvim_create_user_command("TermBackground", "lua print(require('util').termnial_background())", {})
 

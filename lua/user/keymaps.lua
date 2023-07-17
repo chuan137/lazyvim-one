@@ -1,4 +1,4 @@
-local util = require("user.util")
+local util = require("util")
 local map = vim.keymap.set
 
 -- Space as leader key

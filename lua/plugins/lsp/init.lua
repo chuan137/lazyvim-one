@@ -1,4 +1,4 @@
-local U = require("user.util")
+local U = require("util")
 
 return {
 
