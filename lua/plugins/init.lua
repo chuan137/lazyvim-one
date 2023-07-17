@@ -5,10 +5,14 @@ return {
     event = "VeryLazy",
   },
 
-  { "tpope/vim-repeat" },
+  { 
+    "tpope/vim-repeat",
+    event = "VeryLazy",
+  },
 
   {
     "tpope/vim-surround",
+    event = "VeryLazy",
     keys = {
       "ds",
       "cs",
@@ -28,6 +32,7 @@ return {
   -- Auto pairs
   {
     "windwp/nvim-autopairs",
+    event = "VeryLazy",
     config = function()
       require("nvim-autopairs").setup({})
     end,
@@ -36,12 +41,14 @@ return {
   -- git
   {
     "tpope/vim-fugitive",
+    event = "VeryLazy",
     config = function()
       vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { silent = true })
     end,
   },
   {
     "tpope/vim-rhubarb",
+    event = "VeryLazy",
     config = function()
       vim.g.github_enterprise_urls = { "https://github.wdf.sap.corp" }
     end,
@@ -77,6 +84,7 @@ return {
 
   {
     "alexghergh/nvim-tmux-navigation",
+    event = "VeryLazy",
     opts = {
       disable_when_zoomed = true, -- defaults to false
       keybindings = {
@@ -92,13 +100,5 @@ return {
 
   {
     "dstein64/vim-startuptime",
-  },
-
-  { 
-    "simrat39/symbols-outline.nvim" ,
-    config = function (_, opts)
-      require("symbols-outline").setup(opts)
-    end
-
   },
 }
