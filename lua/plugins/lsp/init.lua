@@ -8,8 +8,6 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "ray-x/lsp_signature.nvim",
-      "SmiteshP/nvim-navic",
-      "SmiteshP/nvim-navbuddy",
     },
     init = function()
       local ui_opts = { border = "rounded" }
@@ -29,8 +27,6 @@ return {
 
       local on_attach = function(client, bufnr)
         require("lsp_signature").on_attach(lspsignature_config, bufnr)
-        require("nvim-navic").attach(client, bufnr)
-        require("nvim-navbuddy").attach(client, bufnr)
 
         -- buffer local options
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -75,33 +71,4 @@ return {
     end,
   },
 
-  -- navbuddy
-  {
-    "SmiteshP/nvim-navbuddy",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "MunifTanjim/nui.nvim",
-    },
-    opts = {
-      window = {
-        border = "rounded",
-        size = { height = "50%", width = "70%" },
-        position = { row = "100%", col = "100%" },
-        sections = {
-          left = {
-            size = "25%",
-          },
-          mid = {
-            size = "50%",
-          },
-          right = {
-            preview = "never",
-          },
-        },
-      },
-    },
-    -- config = function(_, opts)
-    --   require("nvim-navbuddy").setup(opts)
-    -- end,
-  },
 }
