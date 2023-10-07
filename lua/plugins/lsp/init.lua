@@ -9,11 +9,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "ray-x/lsp_signature.nvim",
     },
-    init = function()
-      local ui_opts = { border = "rounded" }
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, ui_opts)
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, ui_opts)
-    end,
     config = function()
       -- Lsp logging
       vim.lsp.set_log_level("info")
@@ -37,6 +32,11 @@ return {
 
       -- local servers = require("plugins.lsp.servers")
       local servers = U.import("servers") or {}
+      -- ui
+      local ui_opts = { border = "rounded" }
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, ui_opts)
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, ui_opts)
+
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       for name, server in pairs(servers) do
