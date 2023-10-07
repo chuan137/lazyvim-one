@@ -19,7 +19,7 @@ return {
   {
     -- statusline
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     opts = function()
       local icons = require("user.settings").icons
 

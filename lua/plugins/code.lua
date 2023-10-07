@@ -2,7 +2,8 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     opts = {
       char = "▏",
       show_trailing_blankline_indent = false,
@@ -14,7 +15,8 @@ return {
 
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     opts = {
       signs = {
         add = { text = "▎" },
@@ -32,6 +34,7 @@ return {
         end
 
         -- keymaps
+        -- stylua: ignore start
         map("n", "]g", gs.next_hunk, "Next Hunk")
         map("n", "[g", gs.prev_hunk, "Prev Hunk")
         map("n", "<leader>gb", function() gs.blame_line({ full = true }) end, "Blame Line")
@@ -42,11 +45,21 @@ return {
     },
   },
 
+  -- {
+  --   "simrat39/symbols-outline.nvim",
+  --   event = { "BufReadPost", "BufNewFile" },
+  --   opts = {},
+  -- },
   {
-    "simrat39/symbols-outline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    -- code outline
+    "stevearc/aerial.nvim",
+    event = "VeryLazy",
     opts = {},
+    keys = {
+      { "<leader>o", ":AerialToggle!<CR>", desc = "Toggle Aerial" },
+    },
   },
+
   -- {
   --   "sbdchd/neoformat",
   --   event = "VeryLazy",
