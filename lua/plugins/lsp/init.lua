@@ -48,27 +48,6 @@ return {
         })
       end
     end,
-  },
-
-  -- formatters
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = function()
-      local nls = require("null-ls")
-      return {
-        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git", ".envrc"),
-        sources = {
-          nls.builtins.formatting.stylua,
-          nls.builtins.formatting.isort.with({
-            command = "/Users/d067954/Library/Python/3.9/bin/isort",
-          }),
-          nls.builtins.formatting.yapf.with({
-            command = "/Users/d067954/Library/Python/3.9/bin/yapf",
-          }),
-        },
-      }
-    end,
-  },
+  }
 
 }
