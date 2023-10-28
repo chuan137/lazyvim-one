@@ -2,7 +2,6 @@ return {
   {
     "github/copilot.vim",
     cmd = "Copilot",
-    enabled = false,
     event = "VeryLazy",
     config = function()
       vim.g.copilot_no_tab_map = true
@@ -15,15 +14,17 @@ return {
       -- vim.keymap.set("", "<M-\\>", ":Copilot disable<CR>", { noremap = true, silent = true })
 
       vim.keymap.set("i", "<Right>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
-      vim.keymap.set("i", "<C-\\>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
 
-      -- vim.keymap.set("i", "<S-CR>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
 
-      -- <shift>-<enter> to remove comment signs on new line.
+      -- <shift>-<enter> or <C-\> to remove comment signs on new line.
       -- handy for using copilot, start a new line after typing hints in comment and start accepting suggestions
       -- Note: To send correctly the key sequece (<S-CR>) to vim, keymaps needs to defined in terminal and tmux
       -- ref: https://stackoverflow.com/a/42461580/2153945
-      vim.keymap.set("i", "<S-CR>", "<cr><c-u>")
+      
+      -- vim.keymap.set("i", "<C-\\>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
+      -- vim.keymap.set("i", "<S-CR>", "<cr><c-u>")
+      vim.keymap.set("i", "<S-CR>", 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
+      vim.keymap.set("i", "<C-\\>", "<cr><c-u>")
     end,
   },
 
@@ -49,6 +50,7 @@ return {
   {
     "dpayne/CodeGPT.nvim",
     event = "VeryLazy",
+    enabled = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
@@ -60,6 +62,7 @@ return {
   {
     'Exafunction/codeium.vim',
     event = "VeryLazy",
+    enabled = false,
     config = function()
       -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true })
@@ -71,16 +74,17 @@ return {
   {
     "james1236/backseat.nvim",
     event = "VeryLazy",
+    enabled = false,
     config = function()
       require("backseat").setup({
-        openai_model_id = 'gpt-3.5-turbo',        --gpt-4 (If you do not have access to a model, it says "The model does not exist")
+        openai_model_id = "gpt-3.5-turbo", --gpt-4 (If you do not have access to a model, it says "The model does not exist")
         -- language = 'english', -- Such as 'japanese', 'french', 'pirate', 'LOLCAT'
         -- split_threshold = 100,
         -- additional_instruction = "Respond snarkily", -- (GPT-3 will probably deny this request, but GPT-4 complies)
         highlight = {
-            icon = '', -- ''
-            group = 'SpecialComment',
-        }
+          icon = "", -- ''
+          group = "SpecialComment",
+        },
       })
     end
   },

@@ -1,9 +1,4 @@
 return {
-  {
-    "numToStr/Comment.nvim",
-    config = true,
-    event = "VeryLazy",
-  },
 
   { 
     "tpope/vim-repeat",
@@ -29,14 +24,12 @@ return {
 
   { "wellle/targets.vim" },
 
-  -- Auto pairs
-  {
-    "windwp/nvim-autopairs",
-    event = "VeryLazy",
-    config = function()
-      require("nvim-autopairs").setup({})
-    end,
-  },
+  -- -- Auto pairs
+  -- {
+  --   "windwp/nvim-autopairs",
+  --   event = "InsertEnter",
+  --   opts = {},
+  -- },
 
   -- git
   {
@@ -100,5 +93,6 @@ return {
 
   {
     "dstein64/vim-startuptime",
+    event = "VeryLazy",
   },
 }
